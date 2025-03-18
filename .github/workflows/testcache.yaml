@@ -1,0 +1,42 @@
+name: Test caching
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: namespace-profile-web-builder
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Checkout turbo
+        uses: actions/checkout@v3
+        with:
+          repository: vercel/turborepo
+          path: ./turborepo
+          ref: v2.4.4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup cache
+        uses: ./
+
+      - name: pnpm install
+        run: |
+          cd turborepo/examples/basic
+          pnpm install
+
+      - name: run Turbo
+        run: |
+          cd turborepo/examples/basic
+          pnpm build
