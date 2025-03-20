@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
  
       - name: Set up caching
-        uses: namespace-actions/setup-turbocache
+        uses: namespace-actions/setup-turbocache@v0
  
       - name: Build
         run: turbo build
@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v4
  
       - name: Set up caching
-        uses: namespace-actions/setup-turbocache
+        uses: namespace-actions/setup-turbocache@v0
         with:
           team: second
  
