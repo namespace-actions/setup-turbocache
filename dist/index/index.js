@@ -27441,7 +27441,7 @@ async function main() {
     }
     const contents = external_node_fs_namespaceObject.readFileSync("/var/run/nsc/token.json", "utf8");
     const token = JSON.parse(contents);
-    core.exportVariable("TURBO_API", "https://turbo.cache.ord.namespaceapis.com");
+    core.exportVariable("TURBO_API", "https://turbo.cache.namespaceapi.com");
     core.exportVariable("TURBO_TEAM", team);
     core.setSecret(token.bearer_token);
     core.exportVariable("TURBO_TOKEN", token.bearer_token);
